@@ -1,5 +1,13 @@
 var builder = WebApplication.CreateBuilder(args);
 
+var misReglasCors = "ReglasCors";
+
+builder.Services.AddCors(options =>
+options.AddPolicy(name: misReglasCors, builder =>
+{
+    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+}
+));
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -15,8 +23,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
 }
 
+app.UseCors(misReglasCors);
 app.UseAuthorization();
 
 app.MapControllers();

@@ -7,30 +7,56 @@ using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Hosting.Server;
 using Azure;
 using EmployeeApi.Data;
+using Microsoft.AspNetCore.Cors;
 
 namespace EmployeeApi.Controllers
 {
+    [EnableCors("ReglasCors")]
     [ApiController]
     [Route("[controller]")]
     public class EmployeeController : Controller
     {
 
+        public readonly string _sql;
+        public EmployeeController(IConfiguration config) {
+            _sql = config.GetConnectionString("cadenaConexion");
+        }
 
 
 
 
+        [Route("list")]
         [HttpGet]
-        
         public async Task<IActionResult> list()
         {
-            EmployeeData data = new EmployeeData();
+            EmployeeData data = new EmployeeData(_sql);
             List<EmployeeDto> list =  new List<EmployeeDto>();
             
             try
             {
-                list = await data.list();
+                list = await data.listEmployee();
 
                 return StatusCode(StatusCodes.Status200OK, new {message = "ok",res = list });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "error", res = ex.Message });
+            }
+        }
+
+        [Route("filtre:id")]
+        [HttpGet]
+        public async Task<IActionResult> filtre(string id)
+        {
+            EmployeeData data = new EmployeeData(_sql);
+
+            List<EmployeeDto> list = new List<EmployeeDto>();
+
+            try
+            {
+                list = await data.Employee(id);
+
+                return StatusCode(StatusCodes.Status200OK, new { message = "ok", res = list });
             }
             catch (Exception ex)
             {
@@ -38,19 +64,22 @@ namespace EmployeeApi.Controllers
             }
         }
 
-
-        /*[HttpGet(":id")]
-        [Route("filtre")]
-        public IActionResult filtre()
-        {
-            return View();
-        }
-
         [HttpPost]
         [Route("add")]
-        public IActionResult add()
+        public async Task<IActionResult> add(EmployeeModel oEmployee)
         {
-            return View();
-        }*/
+            EmployeeData data = new EmployeeData(_sql);
+            bool success;
+            try
+            {
+                success = await data.CreateEmployee(oEmployee);
+                return StatusCode(StatusCodes.Status201Created, new { message = "creado", res = oEmployee });
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "error", res = ex });
+            }
+        }
     }
 }
