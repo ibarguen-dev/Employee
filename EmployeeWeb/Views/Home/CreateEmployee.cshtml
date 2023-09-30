@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "CreateEmployee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.ValidationSummary()
+
+<div class="carta">
+
+    <form asp-controller="Home" asp-action="AddEmployee" class="row g-3">
+
+        <div class="col-md-6 col-12">
+            <label for="inputNombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputNombre" required name="Nombre" placeholder="Carlos" onkeyup="validarName()">
+            <p id="ErrorNombre"></p>
+        </div>
+
+        <div class="col-md-6 col-12">
+            <label for="inputApellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="inputApellido" required name="Apellido" placeholder="Garcia Torres" onkeyup="validarLastName()">
+            <p id="ErrorApellido"></p>
+        </div>
+
+
+        <div class="col-md-6 col-12">
+            <label for="inputDocumento" class="form-label">Documento</label>
+            <input type="text" class="form-control" id="inputDocumento" required name="Documento" placeholder="10000" onkeyup="validarDocument()">
+            <p id="ErrorDocumento"></p>
+        </div>
+
+        <div class="col-md-6 col-12">
+            <label for="inputGenero" class="form-label">Genero</label>
+            <input type="text" class="form-control" id="inputGenero" required placeholder="F o M" name="Genero" onkeyup="validarGender()">
+            <p id="ErrorGenero"></p>
+        </div>
+
+        <div class="col-md-6 col-12">
+            <label for="inputTelefono" class="form-label">Telefono</label>
+            <input type="text" class="form-control" id="inputTelefono" required name="Telefono" placeholder="3000000000 o 6040000000" onkeyup="validarPhone()">
+            <p id="ErrorPhone"></p>
+        </div>
+
+        <div class="col-md-6 col-12">
+            <label for="inputCorreo" class="form-label">Correo</label>
+            <input type="text" class="form-control" id="inputCorreo" required name="Correo" placeholder="test@gmail.com" onkeyup="validarEmail()">
+            <p id="ErrorCorreo"></p>
+        </div>
+
+
+        <div class="col-12">
+            <label for="inputDireccion" class="form-label">Direccion</label>
+            <input type="text" class="form-control" id="inputDireccion" required name="Direccion" placeholder="Calle 75b #">
+        </div>
+
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" value="Guardar">Sign in</button>
+        </div>
+
+    </form>
+</div>
+

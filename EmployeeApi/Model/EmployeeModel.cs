@@ -13,7 +13,7 @@ namespace EmployeeApi.Model
         public int Documento { get; set; }
         [Required(ErrorMessage = "No dejar el campo del Telefono vacio")]
         public string Telefono { get; set; }
-        [Required(ErrorMessage = "No dejar el campo del Correo vacio")]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "el email no es correcto")]
         public string Correo { get; set; }
 
         [Required(ErrorMessage = "No dejar el campo del Dirccion vacio")]

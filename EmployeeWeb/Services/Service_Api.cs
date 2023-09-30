@@ -29,8 +29,8 @@ namespace EmployeeWeb.Services
             if (response.IsSuccessStatusCode)
             {
                 var json_respuest = await response.Content.ReadAsStringAsync();
-                var resultado = JsonConvert.DeserializeObject<Emploeeys>(json_respuest);
-                result.Add(resultado);
+                var resultado = JsonConvert.DeserializeObject<Res_Api>(json_respuest);
+                result = resultado.res;
             }
             return result;  
         }
@@ -51,9 +51,9 @@ namespace EmployeeWeb.Services
             {
                 var json_respuest = await response.Content.ReadAsStringAsync();
 
-                var resultado = JsonConvert.DeserializeObject<Emploeeys>(json_respuest);
+                var resultado = JsonConvert.DeserializeObject<Res_Api>(json_respuest);
 
-                result.Add(resultado);
+                result = resultado.res;
             }
             return result;
         }

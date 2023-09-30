@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using EmployeeWeb.Services;
+using System;
+
 namespace EmployeeWeb.Controllers
 {
     public class HomeController : Controller
@@ -13,35 +15,49 @@ namespace EmployeeWeb.Controllers
             _service = servicio;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string buscar)
         {
+
             List<Emploeeys> list;
-            list = await _service.list();
-            /*if (id == "")
+
+            if (!String.IsNullOrEmpty(buscar))
             {
-                
+                list = await _service.get(buscar);
             }
             else
             {
-                /*list = await _service.get(id);
-            }*/
+                list = await _service.list();
+            }
+
             return View(list);
+        }
+
+        
+        public async Task<IActionResult> CreateEmployee()
+        {
+            return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> AddEmployee(AgregarEmploeeys model) {
 
-            bool res = await _service.add(model);
-
-            if (res)
+            bool respuesta;
+            if (!ModelState.IsValid)
             {
-               return RedirectToAction("index");
+                return NoContent();
+            }
+
+            respuesta = await _service.add(model);
+
+            if (respuesta)
+            {
+                return RedirectToAction("index");
             }
             else
             {
                 return NoContent();
             }
-
+            
         }
 
         public IActionResult Privacy()

@@ -40,11 +40,11 @@ namespace EmployeeApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "error", res = ex.Message });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message, res = list });
             }
         }
 
-        [Route("filtre:id")]
+        [Route("filtre/{id}")]
         [HttpGet]
         public async Task<IActionResult> filtre(string id)
         {
@@ -60,7 +60,7 @@ namespace EmployeeApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "error", res = ex });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message, res = list  });
             }
         }
 
@@ -69,7 +69,7 @@ namespace EmployeeApi.Controllers
         public async Task<IActionResult> add(EmployeeModel oEmployee)
         {
             EmployeeData data = new EmployeeData(_sql);
-            bool success;
+            bool success = false;
             try
             {
                 success = await data.CreateEmployee(oEmployee);
@@ -78,7 +78,7 @@ namespace EmployeeApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "error", res = ex });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message, create = success });
             }
         }
     }

@@ -1,0 +1,126 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    font-family: Poppins
+}
+
+header {
+    margin-top: 3em;
+    background: #061d49;
+}
+
+.navegacion-nav {
+    height: 80px;
+    width: 100%;
+    background-color: #4E9AD0;
+    margin-top: -3em;
+    box-shadow: 10px 1px 50px white;
+}
+
+.navegacion-nav__a {
+    width: 50%;
+    margin-top: 500px;
+}
+
+.navegacion-nav__a-img {
+    width: 150px;
+    margin-top: 10px;
+    margin-left: 12px;
+}
+
+.navegacion-nav .navegacion-nav__ul {
+    list-style: none;
+    float: right;
+}
+
+    .navegacion-nav .navegacion-nav__ul li {
+        display: inline-block;
+        line-height: 80px;
+        margin: 0 5px;
+    }
+
+        .navegacion-nav .navegacion-nav__ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 7px 13px;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+            .navegacion-nav .navegacion-nav__ul li a:hover {
+                background-color: #fda04f;
+                color: white;
+                transition: .5;
+            }
+
+.checkbtn {
+    font-size: 30px;
+    color: #fff;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+.contenedor {
+    margin: 150px 300px;
+
+}
+.buscar{
+    margin-top: 3%;
+}
+.carta {
+    background-color: #F3FAFF;
+    border-radius: 19px;
+    padding: 10px;
+    box-shadow: -15px 10px 25px rgba(0,0,0,0.6);
+}
+
+table{
+    margin-top:20px;
+    text-align: center;
+    border-collapse:collapse;
+    width:100%
+}
+
+
+
+th, td {
+    padding: 20px;
+   
+}
+
+input[type=submit] {
+    padding: 10px;
+    margin-left: 15px;
+    border-radius: 5px;
+    background-color: #00A646;
+    color:white;
+}
+thead {
+    background-color: #4E9AD0;
+    border-bottom: solid 5px #0f362d;
+    color: white;
+    border-radius: 19px
+}
+tr:nth-child(even){
+    background-color: #ddd;
+}
+tr:hover {
+    background-color: #0061A6;
+    color: white;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    background-color: #4E9AD0;
+    width: 100%;
+    padding: 25px;
+    text-align: center
+}
