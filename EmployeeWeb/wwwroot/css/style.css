@@ -3,7 +3,11 @@
 * {
     font-family: Poppins
 }
-
+body{
+    position:relative;
+    min-height:100vh;
+    padding-bottom:6.9em;
+}
 header {
     margin-top: 3em;
     background: #061d49;
@@ -68,8 +72,10 @@ header {
 }
 
 .contenedor {
-    margin: 150px 300px;
-
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
 }
 .buscar{
     margin-top: 3%;
@@ -79,6 +85,7 @@ header {
     border-radius: 19px;
     padding: 10px;
     box-shadow: -15px 10px 25px rgba(0,0,0,0.6);
+    width: 100%;
 }
 
 table{
