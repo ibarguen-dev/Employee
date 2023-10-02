@@ -1,4 +1,3 @@
-drop table tblEmployee
 create database DataEmployee
 go
 create table tblEmployee(
@@ -11,8 +10,6 @@ Telefono varchar(13) not null,
 Direccion varchar(90) not null,
 Genero varchar(1) not null
 )
-
-
 go
 create proc sp_busqueda(
 @value varchar(255)
