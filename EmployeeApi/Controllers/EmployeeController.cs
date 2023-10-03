@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using EmployeeApi.Dto;
 using EmployeeApi.Model;
-using System.Data.SqlClient;
-using System.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Hosting.Server;
 using Azure;
@@ -73,7 +71,7 @@ namespace EmployeeApi.Controllers
             try
             {
                 success = await data.CreateEmployee(oEmployee);
-                return StatusCode(StatusCodes.Status201Created, new { message = "creado", res = oEmployee });
+                return StatusCode(StatusCodes.Status201Created, new { message = "creado", res = success  });
 
             }
             catch (Exception ex)
